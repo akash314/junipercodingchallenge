@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Coding Challenge</title>
+		<style>
+			.author {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 style="margin: 10px">Juniper Coding Challenge</h1>
+		<div style="width: 100%;height:630px;border: 1px solid black; border-radius: 3px;padding: 10px 0 10px 0">
+		<div style="float:left; width: 50%">
+		<form id="queryform" class="form-style-1">
+			<label>Start Time:</label><input id="start-time" name="start-time" type="text" /><span class="help"></span>
+			<label>End Time:</label><input id="end-time" name="end-time" type="text" /><span class="help"></span><br><br>
+			<fieldset id='select'>
+				<legend>Select</legend>
+				<input type="checkbox" name="time" value="time"> Time<br>
+	  			<input type="checkbox" name="source_vn" value="source_vn"> Source VN<br>
+				<input type="checkbox" name="source_port" value="source_port"> Source Port<br>
+				<input type="checkbox" name="destination_vn" value="destination_vn"> Destination VN<br>
+				<input type="checkbox" name="destination_port" value="destination_port"> Destination Port<br>
+				<input type="checkbox" name="traffic" value="traffic"> Traffic<br>
+			</fieldset><br>
+			<label>Table Name:</label><input id="tablename" name="tablename" type="text" /><span class="help"></span><br>
+			<fieldset>
+			<legend>Where</legend>
+			<div id="where-clause">
+			</div>	
+			</fieldset><br>
+			
+		</form>
+		<button id="q_button" class="query-button" style="margin-left:30px">Generate Query</button>
+		</div>
+		<div style="float:right; width: 50%">
+		<div id="json-container" style="height:600px; width: 80%;background-color: #c6d0d5; padding:'10px 10px 10px 10px'"></div>
+		</div>
+		</div>
+
+		<link type="text/css" rel="stylesheet" href="app.css" />
+		<link type="text/css" rel="stylesheet" href="../libs/jquery/jquery.qtip.min.css" />
+		<script src="../libs/underscore/underscore-min.js"></script>
+		<script src="../libs/jquery/jquery-3.1.1.min.js"></script>
+		<script src="../libs/backbone/backbone-min.js"></script>
+		<script src="../libs/jquery/jquery.qtip.min.js""></script>
+		<script src="app.js"></script>
+		<script src="models/queryModel.js"></script>
+		<script src="views/queryView.js"></script>
+		<script src="views/whereView.js"></script>
+		<script src="views/whereGroupView.js"></script>
+		<script src="script.js"></script>
+
+		<!-- Templates -->
+		<script type="text/template" id="where-group-template">
+			<fieldset><legend>Clause <%=groupCount%></legend><div id='where-group<%=groupCount%>' class='where-group'> </div></fieldset><input type="button" class = "addGroup" id="add_group<%=groupCount%>" value="Add Group" /><br></div>
+		</script>
+		<script type="text/template" id="where-clause-template">
+  			<div class="clause">
+  			<select class="attr_sel">
+  				<option value="start_time">start_time</option>
+  				<option value="end_time">end_time</option>
+				<option value="source_vn">source_vn</option>
+				<option value="source_port">source_port</option>
+				<option value="destination_vn">destination_vn</option>
+				<option value="destination_port">destination_port</option>
+			</select>
+			<select class="op_sel">
+			  <option value="=">=</option>
+			  <option value="!=">!=</option>
+			</select>
+			<input type="text" class="attr_val" />
+  			<input type="button" class = "add" id="add_button<%=count%>" value="Add" /><br>
+  			</div>
+		</script>
+	</body>
+</html>

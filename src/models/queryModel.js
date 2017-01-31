@@ -17,6 +17,11 @@
 						        errors.push({name: 'end-time', message: '*Invalid end time.'});
 						    }
 
+						    if (attrs.start_time && attrs.end_time && attrs.start_time>attrs.end_time) {
+						        errors.push({name: 'end-time', message: '*End time cannot be before start time.'});
+						    }
+
+
 						    if (!attrs.table_name) {
 						        errors.push({name: 'tablename', message: '*Invalid table name.'});
 						    }

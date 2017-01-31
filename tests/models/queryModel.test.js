@@ -17,5 +17,14 @@ describe("QueryModel", function() {
 		var errors = queryModel.validateForm();
         expect(errors).to.be.empty;
     });
+
+    it("end time before start time", function() {
+        var queryModel = new app.models.Query();
+        queryModel.set('table_name', 'tablename');
+		queryModel.set('start_time', 1485832388000);
+		queryModel.set('end_time', 1475832287000);
+		var errors = queryModel.validateForm();
+        expect(errors).to.have.lengthOf(1);;
+    });
 	
 });

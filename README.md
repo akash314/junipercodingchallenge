@@ -1,6 +1,6 @@
-# junipercodingchallenge
+# QueryBuilder
 
-Juniper Coding Challenge - Web form to build query using BackboneJS, jQuery, JavaScript and HTML. The unit test cases are written using Mocha, Chai and Sinon.
+Web form to build query using BackboneJS, jQuery, JavaScript and HTML. The unit test cases are written using Mocha, Chai and Sinon.
 
 ####View form###
 
